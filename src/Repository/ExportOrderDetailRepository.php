@@ -38,6 +38,21 @@ class ExportOrderDetailRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    
+       /**
+    * @return ExportOrderDetail[] Returns an array of ExportOrderDetail objects
+    */
+   public function findByExampleField($value): array
+   {
+       return $this->createQueryBuilder('ed')
+           ->select('')
+           ->andWhere('ed.id = :val')
+           ->setParameter('val', $value)
+           ->innerJoin('ed.expro','p')
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 
 //    /**
 //     * @return ExportOrderDetail[] Returns an array of ExportOrderDetail objects
