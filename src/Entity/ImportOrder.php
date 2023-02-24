@@ -20,7 +20,7 @@ class ImportOrder
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $time;
 
@@ -98,5 +98,8 @@ class ImportOrder
 
         return $this;
     }
-    
+    public function __toString()
+    {
+        return $this->time;
+    }
 }

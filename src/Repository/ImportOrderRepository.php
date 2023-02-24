@@ -39,6 +39,24 @@ class ImportOrderRepository extends ServiceEntityRepository
         }
     }
 
+       /**
+    * @return ImportOrder[] Returns an array of ImportOrder objects
+    */
+   public function showImport($value): array
+   {
+    // SELECT i.id,u.id,i.time 
+    // FROM `import_order` i,`user` u 
+    // WHERE i.im_user_id=u.id
+       return $this->createQueryBuilder('i')
+           ->select('i.id As ImportID,u.id As UserID ,i.time')
+           ->innerJoin('i.ImUser','u')
+        //     ->Where('i.id = :val')
+        //    ->setParameter('val', $value)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
 //    /**
 //     * @return ImportOrder[] Returns an array of ImportOrder objects
 //     */
