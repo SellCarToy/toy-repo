@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
      * @Route("/import/detail")
      */
-class ImportDetailController extends AbstractController
+class ImportDetailController0 extends AbstractController
 {
 
     private ImportOrderDetailRepository $repo;
