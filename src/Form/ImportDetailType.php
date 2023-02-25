@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\ImportOrderDetail;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,12 +14,13 @@ class ImportDetailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('imorder')
-        ->add('impro')
-        ->add('ImQuantity')
-        ->add('save',SubmitType::class,['label'=>'Confirm'])
+            // ->add('imorder')
+            ->add('impro',EntityType::class)
+            ->add('ImQuantity')
+            ->add('save',SubmitType::class)
         ;
     }
+
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

@@ -20,18 +20,18 @@ class ImportOrderController extends AbstractController
    }
 
    /**
-     * @Route("/", name="improduct_show")
+     * @Route("/import", name="import_show")
      */
-    public function readAllProAction(): Response
+    public function readAllCatAction(): Response
     {
-        $products = $this->repo->findAll();
-        return $this->render('import_order_detail/index.html.twig', [
-            'products'=>$products
+        $ims = $this->repo->findAll();
+        return $this->render('import_order/index.html.twig', [
+            'imports'=>$ims
         ]);
     }
 
-    /**
-     * @Route("/import", name="import_create")
+       /**
+     * @Route("/import/add", name="import_create")
      */
     public function createIm(Request $req, SluggerInterface $slugger): Response
     {
@@ -42,7 +42,7 @@ class ImportOrderController extends AbstractController
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){
             $this->repo->add($i,true);
-            return $this->redirectToRoute('improduct_show', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('imdetail', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render("import_order/form.html.twig",[
             'form' => $form->createView()
