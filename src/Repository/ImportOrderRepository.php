@@ -67,9 +67,9 @@ class ImportOrderRepository extends ServiceEntityRepository
         $en= $this->getEntityManager()->getConnection();
         $sql='
         SELECT i.id,i.im_user_id,i.time,SUM((p.price_import*detail.im_quantity)) as Total_Price
-        FROM `import_order` i,`user` u, `import_order_detail` detail, `product` p 
-        WHERE i.id=detail.imorder_id AND detail.impro_id=p.id
-        GROUP BY detail.imorder_id
+FROM `import_order` i, `import_order_detail` detail, `product` p 
+WHERE i.id=detail.imorder_id AND detail.impro_id=p.id
+GROUP BY detail.imorder_id
         ';
     $stmt=$en->prepare($sql);
     $re=$stmt->executeQuery();

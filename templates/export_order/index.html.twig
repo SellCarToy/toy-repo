@@ -1,20 +1,43 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block title %}Hello ExportOrderController!{% endblock %}
+{% block title %}Import{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/ASM_ToyProject/src/Controller/ExportOrderController.php'|file_link(0) }}">src/Controller/ExportOrderController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/ASM_ToyProject/templates/export_order/index.html.twig'|file_link(0) }}">templates/export_order/index.html.twig</a></code></li>
-    </ul>
-</div>
+  <div className="page-heading pb-2 mt-4 mb-2 ">
+                    <h3>Manager</h3> <a href="{{path('export_create')}}"><button type="button" class="btn btn-outline-primary">Insert</button></a>
+                </div>
+                <div class="page-content">
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+               
+                </div>
+                <div class="card">
+                    <div class="container mb-3">
+                        <div class="table-responsive text-nowrap">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>ExportID</th>                            
+                            <th>UserID</th>
+                            <th>Time</th>
+                            <th>Total Price</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                          {% for e in exports %}
+                              <tr>
+                                  <td>{{ e.id}}</td>
+                                  <td>{{ e.ex_user_id}}</td>
+                                  <td>{{ e.time|date("m/d/Y")}}</td>
+                                  <td>{{ e.Total_Price}}</td>
+                                  <td><a href="{{path('importdetail_show',{'id':i.id})}}">View detail of order {{i.id}}</a></td>
+                              </tr>
+                          {% endfor %}
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+                </div>
+                </div>
 {% endblock %}

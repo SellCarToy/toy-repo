@@ -28,7 +28,6 @@ class ImportOrderController extends AbstractController
         return $this->render('import_order/index.html.twig', [
             'imports'=>$ims
         ]);
-       
     }
 
        /**
@@ -36,8 +35,8 @@ class ImportOrderController extends AbstractController
      */
     public function createIm(Request $req, SluggerInterface $slugger): Response
     {
-        
         $i = new ImportOrder();
+        $form = $this->createForm(ImportOrderType::class, $i);
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){
             $this->repo->add($i,true);

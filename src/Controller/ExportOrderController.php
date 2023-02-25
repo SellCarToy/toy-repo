@@ -15,13 +15,24 @@ use Symfony\Component\String\Slugger\SluggerInterface;
      */
 class ExportOrderController extends AbstractController
 {
-        private ExportOrderRepository $repo1;
-    public function __construct(ExportOrderRepository $repo1)
+        private ExportOrderRepository $repo;
+    public function __construct(ExportOrderRepository $repo)
    {
-      $this->repo1 = $repo1;
+      $this->repo = $repo;
    }
+
+   /**
+     * @Route("/", name="export_show")
+     */
+    public function readAllCatAction(): Response
+    {
+        $exs = $this->repo->totalPrice();
+        return $this->render('export_order/index.html.twig', [
+            'exports'=>$exs
+        ]);
+    }
     /**
-     * @Route("/", name="export_create")
+     * @Route("/add", name="export_create")
      */
     
     public function createEx(Request $req, SluggerInterface $slugger): Response
@@ -32,8 +43,8 @@ class ExportOrderController extends AbstractController
 
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){
-            $this->repo1->add($e,true);
-            return $this->redirectToRoute('category_show', [], Response::HTTP_SEE_OTHER);
+            $this->repo->add($e,true);
+            return $this->redirectToRoute('export_show', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render("export_order/form.html.twig",[
             'form' => $form->createView()
