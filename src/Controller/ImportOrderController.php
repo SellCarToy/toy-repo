@@ -37,8 +37,6 @@ class ImportOrderController extends AbstractController
     {
         
         $i = new ImportOrder();
-        $form = $this->createForm(ImportOrderType::class, $i);
-
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){
             $this->repo->add($i,true);
