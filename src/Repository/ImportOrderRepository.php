@@ -57,6 +57,26 @@ class ImportOrderRepository extends ServiceEntityRepository
        ;
    }
 
+
+
+//    /**
+//     * @return ImportOrder[] Returns an array of ImportOrder objects
+//     */
+   public function totalPrice(): array
+   {
+        $en= $this->getEntityManager()->getConnection();
+        $sql='
+        SELECT i.id,i.im_user_id,i.time,SUM((p.price_import*detail.im_quantity)) as Total_Price
+        FROM `import_order` i,`user` u, `import_order_detail` detail, `product` p 
+        WHERE i.id=detail.imorder_id AND detail.impro_id=p.id
+        GROUP BY detail.imorder_id
+        ';
+    $stmt=$en->prepare($sql);
+    $re=$stmt->executeQuery();
+       return $re->fetchAllAssociative();
+   }
+
+
 //    /**
 //     * @return ImportOrder[] Returns an array of ImportOrder objects
 //     */

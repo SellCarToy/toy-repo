@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\ImportOrder;
 use App\Entity\ImportOrderDetail;
-use App\Entity\Product;
 use App\Form\ImportDetailType;
 use App\Repository\ImportOrderDetailRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,9 +12,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
-     * @Route("/import/detail")
+     * @Route("/detail")
      */
-class ImportDetailController0 extends AbstractController
+class ImportDetailController extends AbstractController
 {
 
     private ImportOrderDetailRepository $repo;
@@ -22,12 +22,29 @@ class ImportDetailController0 extends AbstractController
    {
       $this->repo = $repo;
    }
+
+   /**
+     * @Route("/{id}", name="importdetail_show")
+     */
+    
+        // $ims = $this->repo->findAll();
+        // return $this->render('import_detail/index.html.twig', [
+        //     'imdetails'=>$ims
+        // ]);
+        public function fillOrder(ImportOrder $cateid): Response
+      {
+        $ims = $this->repo->fillOrderById($cateid);
+         return $this->render('import_detail/index.html.twig', [
+                'imdetails'=>$ims]);
+        
+      }
+
     /**
      * @Route("/{id}", name="imdetail",requirements={"id"="\d+"})
      */
     public function addProdAction(Request $req, ImportOrderDetail $detail, string $id): Response
     {
-        
+        //$id = $this->$this->getDoctrine()->getRepository('ImportDetailController:ImportOrderDetail')->find($imorder);
         $form = $this->createForm(ImportDetailType::class, $detail);   
 
         $form->handleRequest($req);
@@ -38,6 +55,16 @@ class ImportDetailController0 extends AbstractController
         }
         return $this->render("import_detail/form.html.twig",[
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="imdetail_read",requirements={"id"="\d+"})
+     */
+    public function showAction(ImportOrder $p): Response
+    {
+        return $this->render('detail.html.twig', [
+            'p'=>$p
         ]);
     }
 }

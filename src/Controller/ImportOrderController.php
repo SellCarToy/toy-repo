@@ -24,10 +24,11 @@ class ImportOrderController extends AbstractController
      */
     public function readAllCatAction(): Response
     {
-        $ims = $this->repo->findAll();
+        $ims = $this->repo->totalPrice();
         return $this->render('import_order/index.html.twig', [
             'imports'=>$ims
         ]);
+       
     }
 
        /**

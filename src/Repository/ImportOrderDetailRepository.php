@@ -52,6 +52,22 @@ class ImportOrderDetailRepository extends ServiceEntityRepository
            ->getResult()
        ;
    }
+      /**
+    * @return ImportOrderDetail[] Returns an array of ImportOrderDetail objects
+    */
+   public function fillOrderById($value): array
+   {
+    return $this->createQueryBuilder('detail')
+    // ->select('detail.id,detail.imorder,detail.impro,detail') 
+    ->innerJoin('detail.impro','detailp')
+    ->innerJoin('detail.imorder','detaili')
+    ->Where('detaili.id = :val')
+    ->setParameter('val', $value)
+    ->getQuery()
+    ->getResult()
+;
+   }
+
 
 //    /**
 //     * @return ImportOrderDetail[] Returns an array of ImportOrderDetail objects
