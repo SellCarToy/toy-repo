@@ -38,12 +38,10 @@ class ImportOrderController extends AbstractController
     {
         
         $i = new ImportOrder();
-        $form = $this->createForm(ImportOrderType::class, $i);
-
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){
             $this->repo->add($i,true);
-            return $this->redirectToRoute('imdetail', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('detailimport', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render("import_order/form.html.twig",[
             'form' => $form->createView()

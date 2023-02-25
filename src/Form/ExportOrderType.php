@@ -16,7 +16,7 @@ class ExportOrderType extends AbstractType
         $builder
         ->add('ExUser')
         ->add('time',DateType::class,['label'=>'CreatedDate'])
-        ->add('save',SubmitType::class,['label'=>'OK'])
+        ->add('save',SubmitType::class,['label'=>'Next'])
         ;
     }
 
