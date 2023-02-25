@@ -16,25 +16,19 @@
                       <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th>ImportID</th>
-                          </tr>
-                          <tr>
+                            <th>ImportID</th>                            
                             <th>UserID</th>
-                          </tr>
-                          <tr>
                             <th>Time</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
                           {% for i in imports %}
                               <tr>
-                                  <td>{{ i.ImportID}}</td>
-                              </tr>
-                              <tr>
-                                  <td>{{ i.UserID}}</td>
-                              </tr>
-                              <tr>
-                                  <td>{{ i.time}}</td>
+                                  <td>{{ i.id}}</td>
+                                  <td>{{ i.ImUser}}</td>
+                                  <td>{{ i.time|date("m/d/Y")}}</td>
+                                  <td><a href="{{path('category_edit',{'id':i.id})}}">View detail of order {{i.id}}</a></td>
                               </tr>
                           {% endfor %}
                           

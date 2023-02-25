@@ -19,8 +19,19 @@ class ImportOrderController extends AbstractController
       $this->repo = $repo;
    }
 
+   /**
+     * @Route("/import", name="import_show")
+     */
+    public function readAllCatAction(): Response
+    {
+        $ims = $this->repo->findAll();
+        return $this->render('import_order/index.html.twig', [
+            'imports'=>$ims
+        ]);
+    }
+
        /**
-     * @Route("/import", name="import_create")
+     * @Route("/import/add", name="import_create")
      */
     public function createIm(Request $req, SluggerInterface $slugger): Response
     {
@@ -31,7 +42,7 @@ class ImportOrderController extends AbstractController
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){
             $this->repo->add($i,true);
-            return $this->redirectToRoute('category_show', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('imdetail', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render("import_order/form.html.twig",[
             'form' => $form->createView()

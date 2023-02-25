@@ -21,7 +21,7 @@ class ProductType extends AbstractType
         ->add('priceImport')
         ->add('priceExport')
         ->add('created',DateType::class,['widget'=>'single_text','required'=>false])
-        // ->add('quantity')
+        ->add('quantity')
         ->add('file',FileType::class,['label'=>'Product Image','required'=>false, 'mapped'=>false])
         ->add('image',HiddenType::class,['required'=>false])
         ->add('save',SubmitType::class,['label'=>'Confirm'])
