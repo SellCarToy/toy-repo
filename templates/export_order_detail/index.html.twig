@@ -1,6 +1,6 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Import{% endblock %}
+{% block title %}Product{% endblock %}
 
 {% block body %}
   <div className="page-heading pb-2 mt-4 mb-2 ">
@@ -16,25 +16,32 @@
                       <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th>#</th>                            
-                            <th>Product name</th>
-                            <th>Quantity</th>
-                            <th></th>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Export Quantity</th>
                           </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                          {% for e in exdetails %}
+                          {% for p in products %}
                               <tr>
-                                  <td>{{ e.id}}</td>
-                                  <td>{{ e.impro}}</td>
-                                  <td>{{ e.ImQuantity}}</td>
+                                  <td>{{ p.id}}</td>
+                                  <td>{{ p.name}}</td>
+                                  <td><input type="number" id="iquantity" name="iquantity"><td>
                               </tr>
                           {% endfor %}
+                          <tr>
+                          </tr>
                           
                         </tbody>
                       </table>
+                      
                     </div>
+                    
                 </div>
+                
                 </div>
+                <br>
+                <a href="{{"exorderdetail_create"}}"><button type="button" class="btn btn-outline-primary" style="float:right">Save</button></a>
                 </div>
 {% endblock %}
+
