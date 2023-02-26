@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-
 use App\Entity\ImportOrderDetail;
 use App\Form\ImportDetailType;
+
 use App\Repository\ImportOrderDetailRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,12 +26,13 @@ class ImportDetailController extends AbstractController
    /**
      * @Route("/{id}", name="importdetail_show")
      */
-        public function fillOrder(ImportOrderDetail $cateid): Response
-      {
+    
         // $ims = $this->repo->findAll();
         // return $this->render('import_detail/index.html.twig', [
         //     'imdetails'=>$ims
         // ]);
+        public function fillOrder(ImportOrderDetail $cateid): Response
+      {
         $ims = $this->repo->fillOrderById($cateid);
          return $this->render('import_detail/index.html.twig', [
                 'imdetails'=>$ims]);
@@ -39,17 +40,16 @@ class ImportDetailController extends AbstractController
       }
 
     /**
-     * @Route("/im", name="imdetail",requirements={"id"="\d+"})
+     * @Route("/{id}", name="imdetail",requirements={"id"="\d+"})
      */
-    public function addProdAction(Request $req): Response
+    public function addProdAction(Request $req, ImportOrderDetail $detail, string $id): Response
     {
-        // $det = $this->repo->addProduct($id);
-        $detail = new ImportOrderDetail();
+        //$id = $this->$this->getDoctrine()->getRepository('ImportDetailController:ImportOrderDetail')->find($imorder);
         $form = $this->createForm(ImportDetailType::class, $detail);   
 
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){
-           
+            $this->repo->addProduct($id);
             $this->repo->add($detail,true);
             return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
         }
@@ -58,13 +58,6 @@ class ImportDetailController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="imdetail_read",requirements={"id"="\d+"})
-     */
-    // public function showAction(ImportOrder $p): Response
-    // {
-    //     return $this->render('detail.html.twig', [
-    //         'p'=>$p
-    //     ]);
-    // }
+    
+
 }
