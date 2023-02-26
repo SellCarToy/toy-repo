@@ -19,15 +19,13 @@ class ExportDetailController extends AbstractController
       $this->repo = $repo;
    }
 
-    /**
-     * @Route("/export/detail", name="app_export_detail")
-     */
-    public function index(): Response
-    {
-        return $this->render('export_detail/index.html.twig', [
-            'controller_name' => 'ExportDetailController',
-        ]);
-    }
+   public function fillOrder(ExportOrderDetail $cateid): Response
+   {
+     $ims = $this->repo->fillOrderById($cateid);
+      return $this->render('export_detail/index.html.twig', [
+             'exdetails'=>$ims]);
+     
+   }
 
     
     /**
