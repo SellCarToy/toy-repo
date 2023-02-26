@@ -140,11 +140,12 @@
               <div class="navbar-nav align-items-center">
                 <div class="nav-item d-flex align-items-center">
                   <i class="bx bx-search fs-4 lh-0"></i>
+                  <form class="w-auto py-1" style="max-width: 12rem" action="{{path('searchByNamePro')}}">
                   <input
-                    type="text"
+                    type="Search"
                     class="form-control border-0 shadow-none"
                     placeholder="Search..."
-                    aria-label=""
+                    aria-label="Search"name="name"
                   />
                 </div>
               </div>
@@ -170,7 +171,7 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
+                            <span class="fw-semibold d-block">Accout</span>
                             <small class="text-muted">Admin</small>
                           </div>
                         </div>
