@@ -1,0 +1,47 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+  <div className="page-heading pb-2 mt-4 mb-2 ">
+                    <h3>Manager</h3> 
+                </div>
+                <div class="page-content">
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+               
+                </div>
+                <div class="card">
+                    <div class="container mb-3">
+                        <div class="table-responsive text-nowrap">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Export Quantity</th>
+                          </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                          {% for p in products %}
+                              <tr>
+                                  <td>{{ p.id}}</td>
+                                  <td>{{ p.name}}</td>
+                                  <td><input type="number" id="iquantity" name="iquantity"><td>
+                              </tr>
+                          {% endfor %}
+                          <tr>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                      
+                    </div>
+                    
+                </div>
+                
+                </div>
+                <br>
+                <a href="{{"exorderdetail_create"}}"><button type="button" class="btn btn-outline-primary" style="float:right">Save</button></a>
+                </div>
+{% endblock %}
+
