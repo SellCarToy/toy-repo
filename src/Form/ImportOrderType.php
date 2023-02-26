@@ -15,7 +15,8 @@ class ImportOrderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('id', EntityType::class, ['class'=>ImportOrder::class, 'choice_label'=>'id', 'mapped'=>false])
+            // ->add('id', EntityType::class, ['class'=>ImportOrder::class, 'choice_label'=>'ID', 'mapped'=>false])
+            ->add('id')
             ->add('ImUser')
             ->add('time',DateType::class,['label'=>'CreatedDate'])
             ->add('save',SubmitType::class,['label'=>'Next'])
