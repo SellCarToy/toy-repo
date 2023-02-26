@@ -17,6 +17,13 @@
                                     
                                         <div class="col-12">
                                             <div class="form-group">
+                                                <label for="first-name-vertical">OrderId</label>
+                                                {{ form_widget(form.id, {'attr':{'placeholder':'Date'}}) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="form-group">
                                                 <label for="first-name-vertical">User Name</label>
                                                 {{ form_widget(form.ImUser, {'attr':{'placeholder':'UserID'}}) }}
                                                 {# <input type="text" id="pname" class="form-control"

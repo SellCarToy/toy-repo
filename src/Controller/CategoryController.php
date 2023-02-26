@@ -36,7 +36,7 @@ class CategoryController extends AbstractController
     /**
      * @Route("/add", name="category_create")
      */
-    public function createAction(Request $req, SluggerInterface $slugger): Response
+    public function createAction(Request $req): Response
     {
         
         $c = new Category();

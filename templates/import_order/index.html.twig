@@ -29,7 +29,7 @@
                                   <td>{{ i.id}}</td>
                                   <td>{{ i.im_user_id}}</td>
                                   <td>{{ i.time|date("m/d/Y")}}</td>
-                                  <td>{{ i.Total_Price}}</td>
+                                  <td><span>&#0036;</span>{{ i.Total_Price}}</td>
                                   <td><a href="{{path('importdetail_show',{'id':i.id})}}">View detail of order {{i.id}}</a></td>
                               </tr>
                           {% endfor %}
