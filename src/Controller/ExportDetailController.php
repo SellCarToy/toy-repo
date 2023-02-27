@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ExportOrderDetail;
+use App\Form\ExportDetailType;
 use App\Repository\ExportOrderDetailRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,31 +20,35 @@ class ExportDetailController extends AbstractController
       $this->repo = $repo;
    }
 
+   /**
+     * @Route("/{id}", name="exportdetail_show")
+     */
    public function fillOrder(ExportOrderDetail $cateid): Response
    {
-     $ims = $this->repo->fillOrderById($cateid);
+    $orderDetails = $this->repo->fillOrderById2($cateid);
+     $exs = $this->repo->fillOrderById($cateid);
       return $this->render('export_detail/index.html.twig', [
-             'exdetails'=>$ims]);
-     
+             'exs'=>$exs,
+            'orderDetails'=>$orderDetails]);
    }
 
     
-    /**
-     * @Route("/{id}", name="exdetailadd",requirements={"id"="\d+"})
-     */
-    public function addProdAction(Request $req, ExportOrderDetail $detail, string $id): Response
-    {
-        //$id = $this->$this->getDoctrine()->getRepository('ImportDetailController:ImportOrderDetail')->find($imorder);
-        $form = $this->createForm(ImportDetailType::class, $detail);   
+    // /**
+    //  * @Route("/{id}", name="exdetailadd",requirements={"id"="\d+"})
+    //  */
+    // public function addProdAction(Request $req, ExportOrderDetail $detail, string $id): Response
+    // {
+    //     //$id = $this->$this->getDoctrine()->getRepository('ImportDetailController:ImportOrderDetail')->find($imorder);
+    //     $form = $this->createForm(ExportDetailType::class, $detail);   
 
-        $form->handleRequest($req);
-        if($form->isSubmitted() && $form->isValid()){
-            $this->repo->addProduct($id);
-            $this->repo->add($detail,true);
-            return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
-        }
-        return $this->render("import_detail/form.html.twig",[
-            'form' => $form->createView()
-        ]);
-    }
+    //     $form->handleRequest($req);
+    //     if($form->isSubmitted() && $form->isValid()){
+    //         $this->repo->addProduct($id);
+    //         $this->repo->add($detail,true);
+    //         return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
+    //     }
+    //     return $this->render("export_detail/form.html.twig",[
+    //         'form' => $form->createView()
+    //     ]);
+    // }
 }

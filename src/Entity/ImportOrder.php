@@ -50,7 +50,7 @@ class ImportOrder
         return $this->time;
     }
 
-    public function setTime(\DateTimeInterface $time): self
+    public function setTime(\DateTimeInterface $time ): self
     {
         $this->time = $time;
 

@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\ExportOrder;
+use App\Entity\ExportOrderDetail;
+use App\Form\ExportDetailType;
 use App\Form\ExportOrderType;
+use App\Repository\ExportOrderDetailRepository;
 use App\Repository\ExportOrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,13 +29,13 @@ class ExportOrderController extends AbstractController
      */
     public function readAllCatAction(): Response
     {
-        $exs = $this->repo->totalPrice();
+        $exs = $this->repo->findAll();
         return $this->render('export_order/index.html.twig', [
             'exports'=>$exs
         ]);
     }
     /**
-     * @Route("/add", name="export_create")
+     * @Route("export/add", name="export_create")
      */
     
     public function createEx(Request $req, SluggerInterface $slugger): Response
@@ -44,10 +47,42 @@ class ExportOrderController extends AbstractController
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){
             $this->repo->add($e,true);
-            return $this->redirectToRoute('exportproduct_show', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('export_show', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render("export_order/form.html.twig",[
             'form' => $form->createView()
         ]);
     }
+
+
+        /**
+     * @Route("/exportdetail/add/{id}", name="exportdetail_add")
+     */
+    public function createExDetail(Request $req, SluggerInterface $slugger,
+    ExportOrder $eo,ExportOrderDetailRepository $eoRepo): Response
+    {
+        $e = new ExportOrderDetail();
+        $form = $this->createForm(ExportDetailType::class, $e);
+        $form->handleRequest($req);
+        if($form->isSubmitted() && $form->isValid()){
+            $e->setExorder($eo);
+            $eoRepo->add($e,true);
+
+            // return new JsonResponse("ok");
+            return $this->redirectToRoute('export_show', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->render("export_detail/form.html.twig",[
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/delete/{id}",name="export_delete",requirements={"id"="\d+"})
+     */
+    
+     public function deleteAction(Request $request, ExportOrder $p): Response
+     {
+         $this->repo->remove($p,true);
+         return $this->redirectToRoute('export_show', [], Response::HTTP_SEE_OTHER);
+     }
 }
