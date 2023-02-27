@@ -100,7 +100,8 @@
     <!-- Navbar brand -->
     <div class="navbar-nav ms-auto"> 
                 <div class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" class="navbar-brand text-white">Brands</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" class="navbar-brand text-white"
+                    style="font-size:20px; color:white">Brands</a>
                       <div class="dropdown-menu">
                         <a class="dropdown-item" href="/">All</a>
                         <a class="dropdown-item" href="/product/brand/1">Rastar</a>
@@ -111,7 +112,7 @@
                       </div>
                 </div>
   </div>
-    <a class="navbar-brand" href="/category">Categories:</a>
+    <a class="navbar-brand" href="/category" style="padding-left:200px">Categories:</a>
     <!-- Toggle button -->
     <button 
        class="navbar-toggler" 
@@ -123,7 +124,7 @@
 
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="border-style: solid;border-color: white;">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="border-right: solid 1px ;border-left: solid 1px ;border-color: white;">
 
         <!-- Link -->
         <li class="nav-item acitve">
@@ -167,7 +168,7 @@
           </div>
           <div class="card-body">
             <a href="{{path('product_read',{"id":p.id})}}" class="text-reset">
-              <h5 class="card-title mb-2">{{p.name}}</h5>
+              <h5 class="card-title mb-2" style="font-weight:500;">{{p.name}}</h5>
             </a>
             <h6 class="mb-3 price">{{p.priceExport}}$</h6>
           </div>
