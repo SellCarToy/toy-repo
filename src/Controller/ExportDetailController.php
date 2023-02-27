@@ -45,6 +45,13 @@ class ExportDetailController extends AbstractController
     // {
     //     //$id = $this->$this->getDoctrine()->getRepository('ImportDetailController:ImportOrderDetail')->find($imorder);
     //     $form = $this->createForm(ExportDetailType::class, $detail);   
+    // /**
+    //  * @Route("/{id}", name="exdetailadd",requirements={"id"="\d+"})
+    //  */
+    // public function addProdAction(Request $req, ExportOrderDetail $detail, string $id): Response
+    // {
+    //     //$id = $this->$this->getDoctrine()->getRepository('ImportDetailController:ImportOrderDetail')->find($imorder);
+    //     $form = $this->createForm(ExportDetailType::class, $detail);   
 
     //     $form->handleRequest($req);
     //     if($form->isSubmitted() && $form->isValid()){

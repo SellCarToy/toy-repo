@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\ExportOrder;
-use App\Entity\ExportOrderDetail;
 use App\Form\ExportDetailType;
+use App\Entity\ExportOrderDetail;
 use App\Form\ExportOrderType;
 use App\Repository\ExportOrderDetailRepository;
 use App\Repository\ExportOrderRepository;
@@ -27,6 +27,7 @@ class ExportOrderController extends AbstractController
      */
     public function readAllCatAction(): Response
     {
+        $exs = $this->repo->findAll();
         $exs = $this->repo->findAll();
         return $this->render('export_order/index.html.twig', [
             'exports'=>$exs
