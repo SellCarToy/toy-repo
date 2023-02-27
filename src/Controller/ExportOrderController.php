@@ -29,7 +29,6 @@ class ExportOrderController extends AbstractController
     public function readAllCatAction(): Response
     {
         $exs = $this->repo->findAll();
-        $exs = $this->repo->findAll();
         return $this->render('export_order/index.html.twig', [
             'exports'=>$exs
         ]);
