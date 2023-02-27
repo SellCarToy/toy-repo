@@ -29,7 +29,7 @@ class ExportDetailController extends AbstractController
 
     
     /**
-     * @Route("/{id}", name="imdetail",requirements={"id"="\d+"})
+     * @Route("/{id}", name="exdetailadd",requirements={"id"="\d+"})
      */
     public function addProdAction(Request $req, ExportOrderDetail $detail, string $id): Response
     {

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ImportOrderDetail;
-use App\Form\ImportDetailType;
+// use App\Form\ImportDetailType;
 
 use App\Repository\ImportOrderDetailRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,30 +33,44 @@ class ImportDetailController extends AbstractController
         // ]);
         public function fillOrder(ImportOrderDetail $cateid): Response
       {
+        $orderDetails = $this->repo->fillOrderById2($cateid);
         $ims = $this->repo->fillOrderById($cateid);
+        // return $this->json($ims);
          return $this->render('import_detail/index.html.twig', [
-                'imdetails'=>$ims]);
+                'ims'=>$ims,
+              'orderDetails'=>$orderDetails]);
         
       }
 
-    /**
-     * @Route("/{id}", name="imdetail",requirements={"id"="\d+"})
-     */
-    public function addProdAction(Request $req, ImportOrderDetail $detail, string $id): Response
-    {
-        //$id = $this->$this->getDoctrine()->getRepository('ImportDetailController:ImportOrderDetail')->find($imorder);
-        $form = $this->createForm(ImportDetailType::class, $detail);   
+    //   /**
+    //  * @Route("/{id}", name="importdetail_show")
+    //  */
+    // public function readAllCatAction(): Response
+    // {
+    //     $ims = $this->repo->totalPrice();
+    //     return $this->render('import_detail/index.html.twig', [
+    //         'imdetails'=>$ims
+    //     ]);
+    // }
 
-        $form->handleRequest($req);
-        if($form->isSubmitted() && $form->isValid()){
-            $this->repo->addProduct($id);
-            $this->repo->add($detail,true);
-            return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
-        }
-        return $this->render("import_detail/form.html.twig",[
-            'form' => $form->createView()
-        ]);
-    }
+    // /**
+    //  * @Route("/{id}", name="imdetail",requirements={"id"="\d+"})
+    //  */
+    // public function addProdAction(Request $req, ImportOrderDetail $detail, string $id): Response
+    // {
+    //     //$id = $this->$this->getDoctrine()->getRepository('ImportDetailController:ImportOrderDetail')->find($imorder);
+    //     $form = $this->createForm(ImportDetailType::class, $detail);   
+
+    //     $form->handleRequest($req);
+    //     if($form->isSubmitted() && $form->isValid()){
+    //         $this->repo->addProduct($id);
+    //         $this->repo->add($detail,true);
+    //         return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
+    //     }
+    //     return $this->render("import_detail/form.html.twig",[
+    //         'form' => $form->createView()
+    //     ]);
+    // }
 
     
 

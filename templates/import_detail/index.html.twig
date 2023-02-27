@@ -5,6 +5,7 @@
 {% block body %}
   <div className="page-heading pb-2 mt-4 mb-2 ">
                     <h3>Manager</h3> 
+                    <a href="/import/"><button type="button" class="btn btn-outline-primary">Back</button></a>
                 </div>
                 <div class="page-content">
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -19,19 +20,30 @@
                             <th>#</th>                            
                             <th>Product name</th>
                             <th>Quantity</th>
-                            <th></th>
+                      
                           </tr>
+                          
                         </thead>
                         <tbody class="table-border-bottom-0">
-                          {% for i in imdetails %}
+                          {% for i in orderDetails %}
                               <tr>
                                   <td>{{ i.id}}</td>
-                                  <td>{{ i.impro}}</td>
+                                  <td>{{ i.name}}</td>
                                   <td>{{ i.ImQuantity}}</td>
+                              
+                                                                 
                               </tr>
-                          {% endfor %}
                           
+                           {% endfor %}
+                          <tr>
+                          <th>Total Price :</th>
+                              <td>{{ ims[0]['Total_Price']}}</td> 
+                              </tr>  
+                              
+                         
                         </tbody>
+                       
+                       
                       </table>
                     </div>
                 </div>

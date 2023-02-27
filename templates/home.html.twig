@@ -106,7 +106,8 @@
     <!-- Navbar brand -->
     <div class="navbar-nav ms-auto"> 
                 <div class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" class="navbar-brand text-white">Brands</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" class="navbar-brand text-white"
+                    style="font-size:20px; color:white">Brands</a>
                       <div class="dropdown-menu">
                         <a class="dropdown-item" href="/">All</a>
                         <a class="dropdown-item" href="/product/brand/1">Rastar</a>
@@ -117,7 +118,7 @@
                       </div>
                 </div>
   </div>
-    <a class="navbar-brand" href="/category">Categories:</a>
+    <a class="navbar-brand" href="/category" style="padding-left:200px">Categories:</a>
     <!-- Toggle button -->
     <button 
        class="navbar-toggler" 
@@ -129,7 +130,7 @@
 
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="border-style: solid;border-color: white;">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="border-right: solid 1px ;border-left: solid 1px ;border-color: white;">
 
         <!-- Link -->
         <li class="nav-item acitve">
@@ -163,17 +164,17 @@
   <div class="text-center">
     <div class="row">
       {% for p in products %}
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4" style="margin: left" >
         <div class="card">
           <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
             data-mdb-ripple-color="light">
             {% set img = p.image %}
-            <img src="{{asset('uploads/'~img)}}"
+            <img src="{{asset('uploads/'~img)}}" style="width: 300px; height: 250px" 
               class="w-100" />
           </div>
           <div class="card-body">
             <a href="{{path('product_read',{"id":p.id})}}" class="text-reset">
-              <h5 class="card-title mb-2">{{p.name}}</h5>
+              <h5 class="card-title mb-2" style="font-weight:500;">{{p.name}}</h5>
             </a>
             <h6 class="mb-3 price">{{p.priceExport}}$</h6>
           </div>
@@ -247,7 +248,7 @@
       <!-- Github -->
       <a
         class="btn-link btn-floating btn-lg text-white"
-        href="#!"
+        href="https://github.com/SellCarToy/toy-repo"
         role="button"
         data-mdb-ripple-color="dark"
         ><i class="fab fa-github"></i
@@ -257,7 +258,7 @@
   </div>
   <!-- Grid container -->
 
-  <div class="footer-widget footer footer-2 dark">
+<div class="footer-widget footer footer-2 dark">
     <div class="row dark large-columns-3 mb-0">
       <div id="text-3" class="col pb-0 widget widget_text">
         <span class="widget-title">TOY SHOP</span>
@@ -288,12 +289,10 @@
             </p>
           </div>
       </div>
-    </div>
-  </div>
 
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); text-color: #E0E0E0">
-    © 2023 Copyright: TOYSHOP.com
+    © 2023 Copyright: ToyShop.com
   </div>
   <!-- Copyright -->
 </footer>

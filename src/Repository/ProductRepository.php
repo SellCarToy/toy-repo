@@ -58,6 +58,21 @@ class ProductRepository extends ServiceEntityRepository
        ;
    }
 
+   public function findProByBrand($value): array
+   {
+    // SELECT p.id,c.id,p.name,p.image,p.price_export 
+    // FROM `product` p, `brand` c 
+    // WHERE p.procat_id=b.id AND b.id=1
+       return $this->createQueryBuilder('p')
+           ->select('p.id,p.name,p.image,p.priceExport') 
+           ->innerJoin('p.probrand','b')
+           ->Where('b.id = :val')
+           ->setParameter('val', $value)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
       /**
     * @return Product[] Returns an array of Product objects
     */

@@ -16,9 +16,9 @@ class ImportOrderType extends AbstractType
     {
         $builder
             // ->add('id', EntityType::class, ['class'=>ImportOrder::class, 'choice_label'=>'ID', 'mapped'=>false])
-            ->add('id')
+            // ->add('id')
             ->add('ImUser')
-            ->add('time',DateType::class,['label'=>'CreatedDate'])
+            ->add('time',DateType::class,['label'=>'CreatedDate','widget'=>'single_text'])
             ->add('save',SubmitType::class,['label'=>'Next'])
         ;
     }

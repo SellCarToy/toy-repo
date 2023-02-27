@@ -19,7 +19,7 @@
                             <th>ImportID</th>                            
                             <th>UserID</th>
                             <th>Time</th>
-                            <th>Total Price</th>
+                            <th></th>
                             <th></th>
                           </tr>
                         </thead>
@@ -27,10 +27,11 @@
                           {% for i in imports %}
                               <tr>
                                   <td>{{ i.id}}</td>
-                                  <td>{{ i.im_user_id}}</td>
+                                  <td>{{ i.ImUser}}</td>
                                   <td>{{ i.time|date("m/d/Y")}}</td>
-                                  <td>{{ i.Total_Price}}</td>
-                                  <td><a href="{{path('importdetail_show',{'id':i.id})}}">View detail of order {{i.id}}</a></td>
+                                  <td><a href="{{path('importdetail_show',{'id':i.id})}}">View</a></td>
+                                  <td><a href="{{path('importdetail_add',{'id':i.id})}}">Add an detail in order {{i.id}}</a></td>
+                                  <td><a href="{{path('import_delete',{'id':i.id})}}">Delete</a></td>
                               </tr>
                           {% endfor %}
                           
