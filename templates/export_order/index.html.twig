@@ -27,10 +27,12 @@
                           {% for e in exports %}
                               <tr>
                                   <td>{{ e.id}}</td>
-                                  <td>{{ e.ex_user_id}}</td>
+                                  <td>{{ e.ExUser}}</td>
                                   <td>{{ e.time|date("m/d/Y")}}</td>
-                                  <td><span>&#0036;</span>{{ e.Total_Price}}</td>
-                                  <td><a href="{{path('importdetail_show',{'id':i.id})}}">View detail of order {{i.id}}</a></td>
+                                  <td><a href="{{path('exportdetail_show',{'id':e.id})}}">View</a></td>
+                                  <td><a href="{{path('exportdetail_add',{'id':e.id})}}">Add an detail in order {{e.id}}</a></td>
+                                  {# <td><a href="{{path('export_edit',{'id':e.id})}}">Edit {{e.id}}</a></td> #}
+                                  <td><a href="{{path('export_delete',{'id':e.id})}}">Delete</a></td>
                               </tr>
                           {% endfor %}
                           
