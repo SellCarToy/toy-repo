@@ -1,10 +1,10 @@
 {% extends "admin.html.twig" %}
 {% block title %}
-    Admin Page - Category
+    
 {% endblock %}
 {% block body %}
       <div className="page-heading pb-2 mt-4 mb-2 ">
-                <h3>Manager</h3> <a href="{{path('category_show')}}"><button type="button" class="btn btn-outline-primary">Back to index</button></a>
+                <h3>Add</h3> <a href="/export/"><button type="button" class="btn btn-outline-primary">Back to index</button></a>
             </div>
             <div class="page-content mt-4">
                 <div class="card">
@@ -25,14 +25,14 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="first-name-vertical">Product Name</label>
-                                                {{ form_widget(form.impro, {'attr':{'placeholder':'Name of product'}}) }}
+                                                {{ form_widget(form.expro, {'attr':{'placeholder':'Name of product'}}) }}
                                             
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="first-name-vertical">Quantity</label>
-                                                {{ form_widget(form.ImQuantity, {'attr':{'placeholder':'Input a number'}}) }}
+                                                {{ form_widget(form.ExQuantity, {'attr':{'placeholder':'Input a number'}}) }}
                                             
                                             </div>
                                         </div>

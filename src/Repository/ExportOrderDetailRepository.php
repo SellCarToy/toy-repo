@@ -54,6 +54,38 @@ class ExportOrderDetailRepository extends ServiceEntityRepository
        ;
    }
 
+     /**
+    * @return ExportOrderDetail[] Returns an array of ExportOrderDetail objects
+    */
+    public function fillOrderByIdex1($value): array
+    {
+     return $this->createQueryBuilder('detail')
+      ->select('SUM(detailp.priceExport*detail.ExQuantity) As Total_Price') 
+     ->innerJoin('detail.expro','detailp')
+     ->innerJoin('detail.exorder','detaile')
+     ->where('detaile.id = :val')
+     ->setParameter('val', $value)
+     ->getQuery()
+     ->getResult()
+ ;
+    }
+        /**
+     * @return ExportOrderDetail[] Returns an array of ExportOrderDetail objects
+     */
+     public function fillOrderByIdex2($value): array
+     {
+      return $this->createQueryBuilder('detail')
+       ->select('detail.id,detailp.name,detail.ExQuantity') 
+      ->innerJoin('detail.expro','detailp')
+      ->innerJoin('detail.exorder','detaile')
+      ->where('detaile.id = :val')
+      ->setParameter('val', $value)
+      ->getQuery()
+      ->getResult()
+  ;
+     }
+
+
 //    /**
 //     * @return ExportOrderDetail[] Returns an array of ExportOrderDetail objects
 //     */

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\ExportOrder;
 use App\Entity\ExportOrderDetail;
 use App\Form\ExportDetailType;
 use App\Repository\ExportOrderDetailRepository;
@@ -23,10 +24,10 @@ class ExportDetailController extends AbstractController
    /**
      * @Route("/{id}", name="exportdetail_show")
      */
-   public function fillOrder(ExportOrderDetail $cateid): Response
+   public function fillOrdere(ExportOrder $cateid): Response
    {
-    $orderDetails = $this->repo->fillOrderById2($cateid);
-     $exs = $this->repo->fillOrderById($cateid);
+    $orderDetails = $this->repo->fillOrderByIdex2($cateid);
+     $exs = $this->repo->fillOrderByIdex1($cateid);
       return $this->render('export_detail/index.html.twig', [
              'exs'=>$exs,
             'orderDetails'=>$orderDetails]);
