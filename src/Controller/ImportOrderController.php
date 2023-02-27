@@ -83,7 +83,7 @@ class ImportOrderController extends AbstractController
     // }
 
     /**
-     * @Route("/delete/{id}",name="import_delete",requirements={"id"="\d+"})
+     * @Route("/import/delete/{id}",name="import_delete",requirements={"id"="\d+"})
      */
     
      public function deleteAction(Request $request, ImportOrder $p): Response
@@ -92,8 +92,27 @@ class ImportOrderController extends AbstractController
          return $this->redirectToRoute('import_show', [], Response::HTTP_SEE_OTHER);
      }
 
-     /**
-     * @Route("/edit/{id}", name="import_edit",requirements={"id"="\d+"})
+    //  /**
+    //  * @Route("/edit/{id}", name="import_edit",requirements={"id"="\d+"})
+    //  */
+    // public function editAction(Request $req, ImportOrder $i): Response
+    // {
+        
+    //     $form = $this->createForm(ImportOrderType::class, $i);   
+
+    //     $form->handleRequest($req);
+    //     if($form->isSubmitted() && $form->isValid()){
+
+    //         $this->repo->add($i,true);
+    //         return $this->redirectToRoute('import_show', [], Response::HTTP_SEE_OTHER);
+    //     }
+    //     return $this->render("import_order/form.html.twig",[
+    //         'form' => $form->createView()
+    //     ]);
+    // }
+
+    /**
+     * @Route("import/edit/{id}", name="import_edit",requirements={"id"="\d+"})
      */
     public function editAction(Request $req, ImportOrder $i): Response
     {

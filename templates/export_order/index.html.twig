@@ -1,10 +1,10 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Import{% endblock %}
+{% block title %}Export{% endblock %}
 
 {% block body %}
   <div className="page-heading pb-2 mt-4 mb-2 ">
-                    <h3>Manager</h3> <a href="{{path('export_create')}}"><button type="button" class="btn btn-outline-primary">Insert</button></a>
+                    <h3>Export Manager</h3> <a href="{{path('export_create')}}"><button type="button" class="btn btn-outline-primary">Insert</button></a>
                 </div>
                 <div class="page-content">
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -19,7 +19,7 @@
                             <th>ExportID</th>                            
                             <th>UserID</th>
                             <th>Time</th>
-                            <th>Total Price</th>
+                            <th></th>
                             <th></th>
                           </tr>
                         </thead>

@@ -21,7 +21,7 @@ class ExportDetailController extends AbstractController
       $this->repo = $repo;
    }
 
-   /**
+    /**
      * @Route("/{id}", name="exportdetail_show")
      */
    public function fillOrdere(ExportOrder $cateid): Response
@@ -41,6 +41,13 @@ class ExportDetailController extends AbstractController
     // {
     //     //$id = $this->$this->getDoctrine()->getRepository('ImportDetailController:ImportOrderDetail')->find($imorder);
     //     $form = $this->createForm(ExportDetailType::class, $detail);   
+    // /**
+    //  * @Route("/{id}", name="exdetailadd",requirements={"id"="\d+"})
+    //  */
+    // public function addProdAction(Request $req, ExportOrderDetail $detail, string $id): Response
+    // {
+    //     //$id = $this->$this->getDoctrine()->getRepository('ImportDetailController:ImportOrderDetail')->find($imorder);
+    //     $form = $this->createForm(ExportDetailType::class, $detail);   
 
     //     $form->handleRequest($req);
     //     if($form->isSubmitted() && $form->isValid()){
@@ -48,7 +55,7 @@ class ExportDetailController extends AbstractController
     //         $this->repo->add($detail,true);
     //         return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
     //     }
-    //     return $this->render("export_detail/form.html.twig",[
+    //     return $this->render("import_detail/form.html.twig",[
     //         'form' => $form->createView()
     //     ]);
     // }

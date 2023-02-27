@@ -1,6 +1,6 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Import{% endblock %}
+{% block title %}Export{% endblock %}
 
 {% block body %}
   <div className="page-heading pb-2 mt-4 mb-2 ">
@@ -26,6 +26,7 @@
                         </thead>
                         <tbody class="table-border-bottom-0">
                           {% for e in orderDetails %}
+                          
                               <tr>
                                   <td>{{ e.id}}</td>
                                   <td>{{ e.name}}</td>
@@ -33,14 +34,11 @@
                               
                                                                  
                               </tr>
-                          
-                           {% endfor %}
+                          {% endfor %}
                           <tr>
                           <th>Total Price :</th>
                               <td>{{ exs[0]['Total_Price']}}</td> 
                               </tr>  
-                              
-                         
                         </tbody>
                        
                        
