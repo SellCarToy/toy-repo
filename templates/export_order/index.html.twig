@@ -1,6 +1,6 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Import{% endblock %}
+{% block title %}Export{% endblock %}
 
 {% block body %}
   <div className="page-heading pb-2 mt-4 mb-2 ">
@@ -19,7 +19,7 @@
                             <th>ExportID</th>                            
                             <th>UserID</th>
                             <th>Time</th>
-                            <th>Total Price</th>
+                            <th></th>
                             <th></th>
                           </tr>
                         </thead>
@@ -27,10 +27,11 @@
                           {% for e in exports %}
                               <tr>
                                   <td>{{ e.id}}</td>
-                                  <td>{{ e.ex_user_id}}</td>
+                                  <td>{{ e.ExUser}}</td>
                                   <td>{{ e.time|date("m/d/Y")}}</td>
-                                  <td><span>&#0036;</span>{{ e.Total_Price}}</td>
-                                  <td><a href="{{path('importdetail_show',{'id':i.id})}}">View detail of order {{i.id}}</a></td>
+                                  <td><a href="{{path('exportdetail_show',{'id':e.id})}}">View</a></td>
+                                  <td><a href="{{path('exportdetail_add',{'id':e.id})}}">Add an detail in order {{e.id}}</a></td>
+                                  <td><a href="{{path('export_delete',{'id':e.id})}}">Delete</a></td>
                               </tr>
                           {% endfor %}
                           

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\ImportOrder;
 use App\Entity\ImportOrderDetail;
 // use App\Form\ImportDetailType;
 
@@ -12,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
-     * @Route("/detail")
+     * @Route("/imdetail")
      */
 class ImportDetailController extends AbstractController
 {
@@ -31,7 +32,7 @@ class ImportDetailController extends AbstractController
         // return $this->render('import_detail/index.html.twig', [
         //     'imdetails'=>$ims
         // ]);
-        public function fillOrder(ImportOrderDetail $cateid): Response
+        public function fillOrder(ImportOrder $cateid): Response
       {
         $orderDetails = $this->repo->fillOrderById2($cateid);
         $ims = $this->repo->fillOrderById($cateid);

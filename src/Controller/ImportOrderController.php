@@ -83,7 +83,7 @@ class ImportOrderController extends AbstractController
     // }
 
     /**
-     * @Route("/delete/{id}",name="import_delete",requirements={"id"="\d+"})
+     * @Route("/import/delete/{id}",name="import_delete",requirements={"id"="\d+"})
      */
     
      public function deleteAction(Request $request, ImportOrder $p): Response

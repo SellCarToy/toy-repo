@@ -40,19 +40,35 @@ class ExportOrderDetailRepository extends ServiceEntityRepository
     }
     
        /**
-    * @return ExportOrderDetail[] Returns an array of ExportOrderDetail objects
+    * @return ExportOrderDetail[] Returns an array of ImportOrderDetail objects
     */
-   public function findByExampleField($value): array
+   public function fillOrderByIdEx1($value): array
    {
-       return $this->createQueryBuilder('ed')
-           ->select('')
-           ->andWhere('ed.id = :val')
-           ->setParameter('val', $value)
-           ->innerJoin('ed.expro','p')
-           ->getQuery()
-           ->getResult()
-       ;
+    return $this->createQueryBuilder('detail')
+     ->select('SUM(detailp.priceExport*detail.ExQuantity) As Total_Price') 
+    ->innerJoin('detail.expro','detailp')
+    ->innerJoin('detail.exorder','detaili')
+    ->Where('detaili.id = :val')
+    ->setParameter('val', $value)
+    ->getQuery()
+    ->getResult()
+;
    }
+       /**
+    * @return ExportOrderDetail[] Returns an array of ImportOrderDetail objects
+    */
+    public function fillOrderByIdEx2($value): array
+    {
+     return $this->createQueryBuilder('detail')
+      ->select('detail.id,detailp.name,detail.ExQuantity') 
+     ->innerJoin('detail.expro','detailp')
+     ->innerJoin('detail.exorder','detaili')
+     ->Where('detaili.id = :val')
+     ->setParameter('val', $value)
+     ->getQuery()
+     ->getResult()
+ ;
+    }
 
 //    /**
 //     * @return ExportOrderDetail[] Returns an array of ExportOrderDetail objects
