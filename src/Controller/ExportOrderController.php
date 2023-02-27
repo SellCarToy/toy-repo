@@ -44,7 +44,7 @@ class ExportOrderController extends AbstractController
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){
             $this->repo->add($e,true);
-            return $this->redirectToRoute('export_show', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('exdetailadd', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render("export_order/form.html.twig",[
             'form' => $form->createView()
