@@ -16,8 +16,8 @@ class ImportDetailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('imorder',EntityType::class,['class'=>ImportOrder::class,'choice_label'=>'id','mapped'=>false])
-            ->add('impro',EntityType::class,['class'=>Product::class,'choice_label'=>'name','mapped'=>false])
+            // ->add('imorder',EntityType::class,['class'=>ImportOrder::class,'choice_label'=>'id','mapped'=>false])
+            ->add('impro',EntityType::class,['class'=>Product::class,'choice_label'=>'name'])
             ->add('ImQuantity')
             ->add('save',SubmitType::class)
         ;

@@ -3,9 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\ImportOrder;
+use App\Entity\ImportOrderDetail;
+use App\Form\ImportDetailType;
 use App\Form\ImportOrderType;
+use App\Repository\ImportOrderDetailRepository;
 use App\Repository\ImportOrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,7 +28,7 @@ class ImportOrderController extends AbstractController
      */
     public function readAllCatAction(): Response
     {
-        $ims = $this->repo->totalPrice();
+        $ims = $this->repo->findAll();
         return $this->render('import_order/index.html.twig', [
             'imports'=>$ims
         ]);
@@ -40,9 +44,31 @@ class ImportOrderController extends AbstractController
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){
             $this->repo->add($i,true);
-            return $this->redirectToRoute('improduct_show', [], Response::HTTP_SEE_OTHER);
+
+            
+            return $this->redirectToRoute('import_show', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render("import_order/form.html.twig",[
+            'form' => $form->createView()
+        ]);
+    }
+        /**
+     * @Route("/importdetail/add/{id}", name="importdetail_add")
+     */
+    public function createImDetail(Request $req, SluggerInterface $slugger,
+    ImportOrder $io,ImportOrderDetailRepository $ioRepo): Response
+    {
+        $i = new ImportOrderDetail();
+        $form = $this->createForm(ImportDetailType::class, $i);
+        $form->handleRequest($req);
+        if($form->isSubmitted() && $form->isValid()){
+            $i->setImorder($io);
+            $ioRepo->add($i,true);
+
+            // return new JsonResponse("ok");
+            return $this->redirectToRoute('import_show', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->render("import_detail/form.html.twig",[
             'form' => $form->createView()
         ]);
     }
@@ -55,5 +81,15 @@ class ImportOrderController extends AbstractController
     //     return $this->render('import_order/index.html.twig',['imports'=>$imports]);
     //     // return $this->json($products);
     // }
+
+    /**
+     * @Route("/delete/{id}",name="import_delete",requirements={"id"="\d+"})
+     */
+    
+     public function deleteAction(Request $request, ImportOrder $p): Response
+     {
+         $this->repo->remove($p,true);
+         return $this->redirectToRoute('import_show', [], Response::HTTP_SEE_OTHER);
+     }
 
 }

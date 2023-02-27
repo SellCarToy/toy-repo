@@ -58,7 +58,7 @@ class ImportOrderDetailRepository extends ServiceEntityRepository
    public function fillOrderById($value): array
    {
     return $this->createQueryBuilder('detail')
-    // ->select('detail.id,detail.imorder,detail.impro,detail') 
+     ->select('SUM(detailp.priceImport*detail.ImQuantity) As Total_Price') 
     ->innerJoin('detail.impro','detailp')
     ->innerJoin('detail.imorder','detaili')
     ->Where('detaili.id = :val')
@@ -67,6 +67,34 @@ class ImportOrderDetailRepository extends ServiceEntityRepository
     ->getResult()
 ;
    }
+       /**
+    * @return ImportOrderDetail[] Returns an array of ImportOrderDetail objects
+    */
+    public function fillOrderById2($value): array
+    {
+     return $this->createQueryBuilder('detail')
+      ->select('detail.id,detailp.name,detail.ImQuantity') 
+     ->innerJoin('detail.impro','detailp')
+     ->innerJoin('detail.imorder','detaili')
+     ->Where('detaili.id = :val')
+     ->setParameter('val', $value)
+     ->getQuery()
+     ->getResult()
+ ;
+    }
+
+//    public function totalPrice(): array
+//    {
+//         $en= $this->getEntityManager()->getConnection();
+//         $sql='
+//         SELECT detail.id,p.name,SUM((p.price_import*detail.im_quantity)) as Total_Price
+// FROM `import_order` i, `import_order_detail` detail, `product` p 
+// WHERE i.id=detail.imorder_id AND detail.impro_id=p.id
+//         ';
+//     $stmt=$en->prepare($sql);
+//     $re=$stmt->executeQuery();
+//        return $re->fetchAllAssociative();
+//    }
 
 
 //    /**
