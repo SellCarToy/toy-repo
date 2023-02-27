@@ -58,12 +58,6 @@
         <li class="nav-item">
           <a class="nav-link" href="{{path('brand_show')}}">Brand</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('import_show')}}">Import</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('export_show')}}">Export</a>
-        </li>
       </ul>
       <!-- Left links -->      
     </div>
@@ -104,8 +98,20 @@
   <div class="container-fluid">
 
     <!-- Navbar brand -->
+    <div class="navbar-nav ms-auto"> 
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" class="navbar-brand text-white">Brands</a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/">All</a>
+                        <a class="dropdown-item" href="/product/brand/1">Rastar</a>
+                        <a class="dropdown-item" href="/product/brand/2">Lego Denmark</a>
+                        <a class="dropdown-item" href="/product/brand/3">Tamiya</a>
+                        <a class="dropdown-item" href="/product/brand/4">Lego Wange</a>
+                      
+                      </div>
+                </div>
+  </div>
     <a class="navbar-brand" href="/category">Categories:</a>
-
     <!-- Toggle button -->
     <button 
        class="navbar-toggler" 
@@ -140,7 +146,10 @@
     </div>
   </div>
   <!-- Container wrapper -->
+  
+  
 </nav>
+
 <!-- Navbar -->
   
 <!-- Products -->
@@ -154,7 +163,7 @@
             data-mdb-ripple-color="light">
             {% set img = p.image %}
             <img src="{{asset('uploads/'~img)}}"
-              class="w-50" />
+              class="w-100" />
           </div>
           <div class="card-body">
             <a href="{{path('product_read',{"id":p.id})}}" class="text-reset">
@@ -232,7 +241,7 @@
       <!-- Github -->
       <a
         class="btn-link btn-floating btn-lg text-white"
-        href="https://github.com/SellCarToy/toy-repo"
+        href="#!"
         role="button"
         data-mdb-ripple-color="dark"
         ><i class="fab fa-github"></i
@@ -242,23 +251,9 @@
   </div>
   <!-- Grid container -->
 
-  <div class="footer-widget footer footer-2 dark">
-    <div class="row dark large-columns-3 mb-0">
-      <div id="text-3" class="col pb-0 widget widget_text">
-        <span class="widget-title">Toy Shop</span>
-        <div class="is-divider small"></div>
-          <div class="text widget">
-            <p>
-              "Toy Shop is a toy shop that distributes children's toys in Vietnam, established in Can Tho in 2023."
-            </p>
-          </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); text-color: #E0E0E0">
-    © 2023 Copyright: ToyShop.com
+    © 2023 Copyright: mdbootstrap
   </div>
   <!-- Copyright -->
 </footer>

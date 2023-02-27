@@ -135,5 +135,17 @@ class ProductController extends AbstractController
         
       }
 
+      /**
+      * @Route("/brand/{brandid}", name="findByBrand")
+      */
+      public function findByBrand(ProductRepository $repo1,string $brandid): Response
+      {
+         $products = $repo1->findProByBrand($brandid);
+         return $this->render('home.html.twig', array(
+             'products' => $products,
+             ));
+        
+      }
+
 }
 
