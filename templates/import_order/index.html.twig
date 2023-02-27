@@ -28,7 +28,7 @@
                               <tr>
                                   <td>{{ i.id}}</td>
                                   <td>{{ i.ImUser}}</td>
-                                  <td>{{ i.time|date("m/d/Y")}}</td>
+                                  <td>{{ i.time|date("d/m/Y")}}</td>
                                   <td><a href="{{path('importdetail_show',{'id':i.id})}}">View</a></td>
                                   <td><a href="{{path('importdetail_add',{'id':i.id})}}">Add an detail in order {{i.id}}</a></td>
                                   <td><a href="{{path('import_delete',{'id':i.id})}}">Delete</a></td>
