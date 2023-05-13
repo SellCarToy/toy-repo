@@ -5,7 +5,8 @@
 {% block body %}
   <div className="page-heading pb-2 mt-4 mb-2 ">
                     <h3>Export Product</h3> 
-                    <a href="/export/"><button type="button" class="btn btn-outline-primary">Back</button></a>
+                    <a href="/export/">
+                    <button type="button" class="btn btn-outline-primary">Back</button></a>
                 </div>
                 <div class="page-content">
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -20,9 +21,7 @@
                             <th>#</th>                            
                             <th>Product name</th>
                             <th>Quantity</th>
-                      
-                          </tr>
-                          
+                          </tr>                         
                         </thead>
                         <tbody class="table-border-bottom-0">
                           {% for e in orderDetails %}
@@ -30,9 +29,7 @@
                               <tr>
                                   <td>{{ e.id}}</td>
                                   <td>{{ e.name}}</td>
-                                  <td>{{ e.ExQuantity}}</td>
-                              
-                                                                 
+                                  <td>{{ e.ExQuantity}}</td>                          
                               </tr>
                           {% endfor %}
                           <tr>

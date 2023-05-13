@@ -38,20 +38,6 @@ class ImportOrderDetailRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
-       /**
-    * @return ImportOrderDetail[] Returns an array of ImportOrderDetail objects
-    */
-   public function addProduct($value): array
-   {
-       return $this->createQueryBuilder('id')
-           ->select('max(i.id),p.name as Product Name,id.ImQuantity') 
-           ->innerJoin('id.imorder','i')
-           ->innerJoin('id.impro','p')
-           ->getQuery()
-           ->getResult()
-       ;
-   }
       /**
     * @return ImportOrderDetail[] Returns an array of ImportOrderDetail objects
     */

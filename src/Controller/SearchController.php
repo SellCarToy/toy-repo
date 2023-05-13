@@ -25,15 +25,15 @@ class SearchController extends AbstractController
             'products'=>$prods
         ]);
     }
-    /**
-     * @Route("/product", name="searchByNamePro")
-     */
-    public function searchProductAction(ProductRepository $repo, Request $req): Response
-    {
-        $name = $req->query->get('name');
-        $prods = $repo->searchByName($name);
-        return $this->render('home.html.twig', [
-            'products'=>$prods
-        ]);
-    }
+    // /**
+    //  * @Route("/product", name="searchByNamePro")
+    //  */
+    // public function searchProductAction(ProductRepository $repo, Request $req): Response
+    // {
+    //     $name = $req->query->get('name');
+    //     $prods = $repo->searchByName($name);
+    //     return $this->render('home.html.twig', [
+    //         'products'=>$prods
+    //     ]);
+    // }
 }

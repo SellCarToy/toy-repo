@@ -4,7 +4,9 @@
 
 {% block body %}
   <div className="page-heading pb-2 mt-4 mb-2 ">
-                    <h3>Export Manager</h3> <a href="{{path('export_create')}}"><button type="button" class="btn btn-outline-primary">Insert</button></a>
+            <h3>Export Manager</h3> 
+            <a href="{{path('export_create')}}">
+            <button type="button" class="btn btn-outline-primary">Insert</button></a>
                 </div>
                 <div class="page-content">
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -17,7 +19,7 @@
                         <thead>
                           <tr>
                             <th>ExportID</th>                            
-                            <th>UserID</th>
+                            <th>User name</th>
                             <th>Time</th>
                             <th></th>
                             <th></th>
@@ -30,7 +32,8 @@
                                   <td>{{ e.ExUser}}</td>
                                   <td>{{ e.time|date("d/m/Y")}}</td>
                                   <td><a href="{{path('exportdetail_show',{'id':e.id})}}">View</a></td>
-                                  <td><a href="{{path('exportdetail_add',{'id':e.id})}}">Add an detail in order {{e.id}}</a></td>
+                                  <td><a href="{{path('exportdetail_add',{'id':e.id})}}">
+                                  Add an detail in order {{e.id}}</a></td>
                                   <td><a href="{{path('export_edit',{'id':e.id})}}">Edit</a></td>
                                   <td><a href="{{path('export_delete',{'id':e.id})}}">Delete</a></td>
                               </tr>

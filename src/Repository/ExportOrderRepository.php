@@ -39,19 +39,7 @@ class ExportOrderRepository extends ServiceEntityRepository
         }
     }
 
-    public function totalPrice(): array
-   {
-        $en= $this->getEntityManager()->getConnection();
-        $sql='
-        SELECT e.id,e.ex_user_id,e.time,SUM((p.price_export*edetail.ex_quantity)) as Total_Price
-FROM `export_order` e, `export_order_detail` edetail, `product` p 
-WHERE e.id=edetail.exorder_id AND edetail.expro_id=p.id
-GROUP BY edetail.exorder_id
-        ';
-    $stmt=$en->prepare($sql);
-    $re=$stmt->executeQuery();
-       return $re->fetchAllAssociative();
-   }
+    
 
 //    /**
 //     * @return ExportOrder[] Returns an array of ExportOrder objects

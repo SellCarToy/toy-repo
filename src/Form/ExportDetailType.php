@@ -16,7 +16,6 @@ class ExportDetailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            // ->add('exorder',EntityType::class,['class'=>ExportOrder::class,'choice_label'=>'id','mapped'=>false])
             ->add('expro',EntityType::class,['class'=>Product::class,'choice_label'=>'name'])
             ->add('ExQuantity')
             ->add('save',SubmitType::class)
